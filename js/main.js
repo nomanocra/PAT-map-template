@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isDragging) return;
 
       const deltaX = e.clientX - startX;
-      const newWidth = Math.max(400, startWidth - deltaX); // Minimum width of 200px
+      const maxWidth = window.innerWidth - 16; // Window width minus 16px padding
+      const newWidth = Math.min(maxWidth, Math.max(400, startWidth - deltaX));
 
       status.style.width = `${newWidth}px`;
     }
