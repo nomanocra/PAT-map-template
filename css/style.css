@@ -1,0 +1,155 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+  color: #1b1919;
+}
+
+body {
+  background-image: url('https://www.bareways.ai/wp-content/uploads/2024/02/Maps-Header.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.main {
+  height: 100vh;
+}
+
+.card,
+.resizable-card {
+  background-color: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  .card-header {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    max-height: 48px;
+    font-size: 14px;
+    font-weight: 600;
+    &:hover {
+      cursor: pointer;
+      background-color: #f0f0f0;
+    }
+  }
+  .card-content {
+    display: none;
+    font-size: 14px;
+    font-weight: 400;
+    padding: 8px;
+    color: #1b1919;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.resizable-card {
+  display: flex;
+  flex-direction: row;
+}
+
+.resizable-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.paring-list-container,
+.paring-status-container {
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+}
+
+.paring-list-container {
+  left: 8px;
+  transition: grid-template-rows 0.3s ease, width 0.3s ease;
+}
+
+.paring-list-container.closed {
+  grid-template-rows: auto 1fr;
+  width: 200px;
+  .material-icons {
+    transform: rotate(180deg);
+  }
+}
+
+.paring-list-container:not(.closed) {
+  grid-template-rows: auto 0fr;
+  width: 600px;
+  .card-content {
+    display: flex;
+  }
+}
+
+.paring-list-container.closed .card-content {
+  display: none;
+}
+
+.paring-status-container.closed {
+  grid-template-rows: auto 1fr;
+  width: 200px;
+  .paring-status-grip {
+    display: none;
+  }
+  .material-icons {
+    transform: rotate(180deg);
+  }
+}
+
+.paring-status-container:not(.closed) {
+  grid-template-rows: auto 0fr;
+  width: 400px;
+  .paring-status-grip {
+    display: flex;
+  }
+  .card-content {
+    display: flex;
+  }
+}
+
+.paring-status-container.closed .card-content {
+  display: none;
+}
+
+.paring-status-container {
+  right: 8px;
+  transition: grid-template-rows 0.3s ease, width 0.3s ease;
+}
+
+.paring-list {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.paring-status {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+}
+
+.paring-status-grip {
+  width: 8px;
+  cursor: ew-resize;
+  display: flex;
+}
+
+.material-icons::before {
+  content: attr(data-icon);
+}
+
+.material-icons {
+  transition: transform 0.3s ease;
+}
