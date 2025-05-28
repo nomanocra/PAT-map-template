@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   function init() {
     const grip = document.querySelector('.paring-status-grip');
-    const status = document.querySelector('.paring-status-container');
+    const statusContainer = document.querySelector('.paring-status-container');
 
     let isDragging = false;
     let startX;
@@ -10,13 +10,13 @@ document.addEventListener('DOMContentLoaded', () => {
     grip.addEventListener('mousedown', (e) => {
       isDragging = true;
       startX = e.clientX;
-      startWidth = parseInt(getComputedStyle(status).width);
-      status.style.transition = 'none';
+      startWidth = parseInt(getComputedStyle(statusContainer).width);
+      statusContainer.style.transition = 'none';
 
       document.addEventListener('mousemove', handleMouseMove);
       document.addEventListener('mouseup', () => {
         isDragging = false;
-        status.style.transition =
+        statusContainer.style.transition =
           'grid-template-rows 0.3s ease, width 0.3s ease';
         document.removeEventListener('mousemove', handleMouseMove);
       });
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const maxWidth = window.innerWidth - 16; // Window width minus 16px padding
       const newWidth = Math.min(maxWidth, Math.max(400, startWidth - deltaX));
 
-      status.style.width = `${newWidth}px`;
+      statusContainer.style.width = `${newWidth}px`;
     }
   }
 
